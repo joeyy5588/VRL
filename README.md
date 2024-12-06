@@ -3,6 +3,10 @@ Code for paper: *Verbalized Representation Learning for Interpretable Few-Shot G
 
 - 📄 **[ArXiv Paper](https://arxiv.org/abs/2411.18651)** 
 
+[Cheng-Fu Yang](https://joeyy5588.github.io/chengfu-yang/), Da Yin, Wenbo Hu, Nanyun Peng, Bolei Zhou, Kai-Wei Chang
+
+![](files/vrl.png)
+
 ## Installation
 ```bash
 pip install --upgrade pip
@@ -15,13 +19,17 @@ pip install tabulate open-clip-torch
 
 ## Dataset
 Download the iNaturalist dataset from [here](https://github.com/visipedia/inat_comp/tree/master/2021)
-You will need to subsample 
 
 Download the Kiki-Bouba datasets here:
 
 KikiBouba_v1: [link](https://drive.google.com/file/d/1-a4FRS9N1DLf3_YIYq8150zN1uilapft/view?usp=sharing)
 
 KikiBouba_v2: [link](https://drive.google.com/file/d/17ibF3tzFiZrMb9ZnpYlLEh-xmWkPJpNH/view?usp=sharing)
+
+You will need to subsample the dataset to create the few-shot setting.
+```bash
+# TBD: Script to subsample the dataset
+```
 
 ## Training
 Launch the LLaVA model in backend:
@@ -90,4 +98,5 @@ python evaluate.py --training-feature-file YOUR_TRAINING_FEATURE_FILE --inferenc
 For the feature ensemble experiment:
 ```bash
 # Assuming that you have already generated the features for the inter-class difference and intra-class commonality features
-
+python ensemble.py --question-file-folder YOUR_QUESTION_FILE_FOLDER --train-feature-folder-1 YOUR_TRAINING_FEATURE_FOLDER_1 --val-feature-folder-1 YOUR_TESTING_FEATURE_FOLDER_1 --train-feature-folder-2 YOUR_TRAINING_FEATURE_FOLDER_2 --val-feature-folder-2 YOUR_TESTING_FEATURE_FOLDER_2
+```
