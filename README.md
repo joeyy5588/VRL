@@ -1,13 +1,22 @@
-# Verbalized Representation Learning
-Code for paper: *Verbalized Representation Learning for Interpretable Few-Shot Generalization*
+# Verbalized Representation Learning (VRL)
 
-- 📄 **[ArXiv Paper](https://arxiv.org/abs/2411.18651)** 
+**Verbalized Representation Learning for Interpretable Few-Shot Generalization** 
 
-[Cheng-Fu Yang](https://joeyy5588.github.io/chengfu-yang/), Da Yin, Wenbo Hu, Nanyun Peng, Bolei Zhou, Kai-Wei Chang
+🏆 Accepted to ICCV 2025
+
+📣 [![ArXiv](https://img.shields.io/badge/arXiv-2411.18651-b31b1b.svg)](https://arxiv.org/abs/2411.18651)
+
+
+## 🎬 Author
+[Cheng-Fu Yang](https://joeyy5588.github.io/chengfu-yang/), [Da Yin](https://wadeyin9712.github.io/), [Wenbo Hu](https://gordonhu608.github.io/), Heng Ji, Nanyun Peng, Bolei Zhou, Kai-Wei Chang
 
 ![](files/vrl.png)
 
-## Installation
+## 🔍 Overview
+
+This repository contains code and instructions for our paper on **Verbalized Representation Learning**, which leverages human-like verbal descriptions to enhance few-shot generalization in vision models.
+
+## 🚀 Installation
 ```bash
 pip install --upgrade pip
 pip install "sglang[all]"
@@ -17,7 +26,7 @@ pip install flashinfer -i https://flashinfer.ai/whl/cu121/torch2.4/
 pip install tabulate open-clip-torch
 ```
 
-## Dataset
+## 📂 Dataset
 Download the iNaturalist dataset from [here](https://github.com/visipedia/inat_comp/tree/master/2021)
 
 Download the Kiki-Bouba datasets here:
@@ -31,7 +40,7 @@ You will need to subsample the dataset to create the few-shot setting.
 # TBD: Script to subsample the dataset
 ```
 
-## Training
+## ⚙️ Training
 Launch the LLaVA model in backend:
 ```bash
 python -m sglang.launch_server --model-path lmms-lab/llava-onevision-qwen2-7b-ov --port=30000 --chat-template=chatml-llava --tp-size 2
@@ -64,7 +73,7 @@ python c_generate_feature_ov.py --image-folder TRAIN_IMAGE_FOLDER --question-fil
 python c_generate_feature_clip.py --image-folder TRAIN_IMAGE_FOLDER --question-file-folder YOUR_ANSWER_FILE_FOLDER_IN_B --answer-file-folder YOUR_ANSWER_FILE_FOLDER
 ```
 
-## Evaluation
+## 🧪 Evaluation
 For inter-class difference features:
 ```bash
 # For iNaturalist
@@ -99,4 +108,15 @@ For the feature ensemble experiment:
 ```bash
 # Assuming that you have already generated the features for the inter-class difference and intra-class commonality features
 python ensemble.py --question-file-folder YOUR_QUESTION_FILE_FOLDER --train-feature-folder-1 YOUR_TRAINING_FEATURE_FOLDER_1 --val-feature-folder-1 YOUR_TESTING_FEATURE_FOLDER_1 --train-feature-folder-2 YOUR_TRAINING_FEATURE_FOLDER_2 --val-feature-folder-2 YOUR_TESTING_FEATURE_FOLDER_2
+```
+
+## Citation
+If you find our work helpful, please consider citing:
+```
+@article{yang2024verbalized,
+  title={Verbalized Representation Learning for Interpretable Few-Shot Generalization},
+  author={Yang, Cheng-Fu and Yin, Da and Hu, Wenbo and Peng, Nanyun and Zhou, Bolei and Chang, Kai-Wei},
+  journal={arXiv preprint arXiv:2411.18651},
+  year={2024}
+}
 ```
